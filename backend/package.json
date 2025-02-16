@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "drizzle-orm": "^0.39.3",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
