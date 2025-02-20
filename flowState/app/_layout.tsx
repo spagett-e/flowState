@@ -34,9 +34,7 @@ export default function RootLayout({
     <TamaguiProvider config={config}>
       <Theme name="dark">
         <StatusBar style="auto" />
-        <YStack flex={1}>
-          {children}
-        </YStack>
+        {children}
       </Theme>
     </TamaguiProvider>
   );
