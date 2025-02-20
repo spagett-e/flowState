@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   // Load your custom fonts (adjust paths/names as needed)
   const [fontsLoaded] = useFonts({
-    "CascadiaCode": require("../assets/fonts/CascadiaCode.woff2"),
+    "CascadiaCode": require("../assets/fonts/CascadiaCode.ttf"),
   });
 
   // Once fonts are loaded, hide the splash screen
