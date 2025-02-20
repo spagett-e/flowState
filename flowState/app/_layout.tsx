@@ -35,10 +35,6 @@ export default function RootLayout({
       <Theme name="dark">
         <StatusBar style="auto" />
         <YStack flex={1}>
-          <Text fontSize={24} fontWeight="bold">
-            Hello, flowState
-          </Text>
-          {/* Render the rest of your routes/pages */}
           {children}
         </YStack>
       </Theme>
