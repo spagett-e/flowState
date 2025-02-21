@@ -5,13 +5,15 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "flowstate", 
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "chat.flowState.app"
     },
     "android": {
+      "package": "chat.flowState.app",
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
