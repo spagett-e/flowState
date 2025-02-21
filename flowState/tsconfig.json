@@ -4,7 +4,9 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"]
-    }
+    },
+    "moduleResolution": "node",
+    "types": ["tamagui"]
   },
   "include": [
     "**/*.ts",
