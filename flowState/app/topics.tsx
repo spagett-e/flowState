@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { YStack, XStack, Input, ScrollView, Button } from 'tamagui';
-import { TopicDetails } from './TopicDetails';
+import { TopicDetails } from '../components/topics/TopicDetails';
 
 const topics = [
   { id: 1, name: 'Bitcoin Security', summary: 'How Bitcoin transactions work...', keyPoints: ['Encryption', 'Keys', 'Wallets'], related: [2, 3] },
@@ -15,7 +15,7 @@ export const TopicsView = () => {
   const filteredTopics = topics.filter(t => t.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <YStack flex={1} padding="$4">
+    <YStack flex={1}>
       {/* Search Bar */}
       <Input
         placeholder="Search topics..."
@@ -25,7 +25,7 @@ export const TopicsView = () => {
 
       {/* Topics List */}
       <ScrollView>
-        <XStack flexWrap="wrap" gap="$2" marginTop="$4">
+        <XStack flexWrap="wrap" gap="$2">
           {filteredTopics.map((topic) => (
             <Button key={topic.id} onPress={() => setSelectedTopic(topic)} size="$2" variant="outlined">
               {topic.name}
@@ -36,7 +36,7 @@ export const TopicsView = () => {
 
       {/* Popup for Selected Topic */}
       {selectedTopic && (
-        <TopicDetailsPopup topic={selectedTopic} onClose={() => setSelectedTopic(null)} />
+        <TopicDetails topic={selectedTopic} onClose={() => setSelectedTopic(null)} />
       )}
     </YStack>
   );
