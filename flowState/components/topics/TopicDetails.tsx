@@ -7,13 +7,13 @@ export const TopicDetails = ({ topic, onClose }) => {
         <Sheet.Handle />
 
         {/* Topic Title */}
-        <Text fontSize="$6" fontWeight="bold">{topic.name}</Text>
+        <Text>{topic.name}</Text>
 
         {/* Summary */}
         <Text>{topic.summary}</Text>
 
         {/* Key Points */}
-        <YStack gap="$2">
+        <YStack>
           {topic.keyPoints.map((point, index) => (
             <Text key={index}>• {point}</Text>
           ))}
@@ -21,10 +21,10 @@ export const TopicDetails = ({ topic, onClose }) => {
 
         {/* Related Topics */}
         <YStack>
-          <Text fontWeight="bold">Related Topics</Text>
-          <XStack gap="$2">
+          <Text>Related Topics</Text>
+          <XStack>
             {topic.related.map((relatedId) => (
-              <Button key={relatedId} size="$2">
+              <Button key={relatedId}>
                 {topic.find(t => t.id === relatedId)?.name}
               </Button>
             ))}

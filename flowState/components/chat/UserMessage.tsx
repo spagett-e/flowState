@@ -1,5 +1,5 @@
 import React from 'react';
-import { XStack, YStack, Text, Divider, Image } from 'tamagui';
+import { XStack, YStack, Text, Separator, Image } from 'tamagui';
 
 type AttachmentType = 'audio' | 'image' | 'video' | 'document';
 
@@ -20,11 +20,8 @@ const renderAttachment = (attachment: Attachment) => {
       return (
         <YStack
           key={attachment.uri}
-          padding="$2"
-          borderRadius="$3"
-          backgroundColor="$gray4"
         >
-          <Text size="$2">Audio Waveform</Text>
+          <Text>Audio Waveform</Text>
         </YStack>
       );
     case 'image':
@@ -32,30 +29,18 @@ const renderAttachment = (attachment: Attachment) => {
         <Image
           key={attachment.uri}
           source={{ uri: attachment.uri }}
-          width={100}
-          height={100}
-          borderRadius="$3"
           alt="attachment image"
         />
       );
     case 'video':
       return (
-        <YStack key={attachment.uri} position="relative">
+        <YStack key={attachment.uri}>
           <Image
             source={{ uri: attachment.uri }}
-            width={100}
-            height={100}
-            borderRadius="$3"
             alt="video thumbnail"
           />
           {/* Overlay a play icon or text */}
-          <Text
-            position="absolute"
-            bottom={5}
-            right={5}
-            color="white"
-            fontSize={12}
-          >
+          <Text>
             Play
           </Text>
         </YStack>
@@ -64,12 +49,8 @@ const renderAttachment = (attachment: Attachment) => {
       return (
         <YStack
           key={attachment.uri}
-          padding="$2"
-          borderRadius="$3"
-          backgroundColor="$gray4"
-          alignItems="center"
         >
-          <Text size="$2">Document</Text>
+          <Text>Document</Text>
         </YStack>
       );
     default:
@@ -79,22 +60,17 @@ const renderAttachment = (attachment: Attachment) => {
 
 const UserMessage = ({ text, attachments }: UserMessageProps) => {
   return (
-    <XStack justifyContent="flex-end" padding="$2">
-      <YStack
-        backgroundColor="$blue10"
-        padding="$3"
-        borderRadius="$4"
-        maxWidth="80%"
-      >
+    <XStack>
+      <YStack>
         {attachments && attachments.length > 0 && (
           <>
-            <XStack space="$2" marginBottom="$2">
+            <XStack>
               {attachments.map(renderAttachment)}
             </XStack>
-            <Divider my="$2" />
+            <Separator />
           </>
         )}
-        <Text color="white">{text}</Text>
+        <Text>{text}</Text>
       </YStack>
     </XStack>
   );

@@ -22,7 +22,7 @@ const ChatContent = () => {
 
   return (
     <ScrollView ref={scrollViewRef} flex={1}>
-      <YStack padding="$4" space="$3">
+      <YStack>
         {messages.map((msg) =>
           msg.type === 'user' ? (
             <UserMessage key={msg.id} text={msg.text} attachments={msg.attachments} />

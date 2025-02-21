@@ -3,14 +3,9 @@ import { ProjectViewButton, TopicViewButton } from './HeaderButtons';
 
 const Header = () => {
   return (
-    <XStack 
-      alignItems="center" 
-      justifyContent="space-between" 
-      padding="$4"
-      width="100%"
-    >
+    <XStack>
       <ProjectViewButton />
-      <H2 textAlign="center" flex={1}>
+      <H2 flex={1}>
         flowState
       </H2>
       <TopicViewButton />

@@ -14,22 +14,14 @@ const ChatInput = () => {
   };
 
   return (
-    <YStack padding="$4">
-      <XStack
-        borderRadius="$4"
-        borderWidth={1}
-        borderColor={theme.borderColor}
-        padding="$2"
-        space="$2"
-        alignItems="flex-end"
-      >
+    <YStack>
+      <XStack>
         {/* Auto-growing input field */}
         <TextArea
           ref={inputRef}
           value={message}
           onChangeText={setMessage}
           placeholder="Type a message..."
-          minHeight={50}
           maxHeight={150} // Limit max height
           flex={1}
         />
