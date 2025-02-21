@@ -41,3 +41,4 @@ export const TopicsView = () => {
     </YStack>
   );
 };
+export default TopicsView;
