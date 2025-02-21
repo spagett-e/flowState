@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TamaguiProvider, Theme, YStack, Text } from "tamagui";
+import { TamaguiProvider, Theme, } from "tamagui";
 import { config } from "../tamagui.config";
+import { Slot } from "expo-router";
 
 // Prevent the splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
@@ -34,7 +35,7 @@ export default function RootLayout({
     <TamaguiProvider config={config}>
       <Theme name="dark">
         <StatusBar style="auto" />
-        {children}
+        <Slot />
       </Theme>
     </TamaguiProvider>
   );

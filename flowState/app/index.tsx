@@ -1,11 +1,10 @@
-import { YStack, ZStack, ScrollView } from 'tamagui';
+import { YStack, ZStack } from 'tamagui';
 import ChatHeader from '../components/chat/ChatHeader';
 import ChatContent from '../components/chat/ChatContent';
 import ChatInput from '../components/chat/ChatInput';
 import ChatButtons from '../components/chat/ChatButtons';
 
-const Chat = () => {
-  const headerHeight = 80; // Adjust based on your design
+export default function Index() {
 
   return (
     <YStack flex={1}>
@@ -18,5 +17,3 @@ const Chat = () => {
     </YStack>
   );
 };
-
-export default Chat;
