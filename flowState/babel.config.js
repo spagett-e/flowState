@@ -3,7 +3,6 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
-      'expo-router/babel', // Add this line for Expo Router support
 
       [
         '@tamagui/babel-plugin',

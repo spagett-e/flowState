@@ -1,6 +1,6 @@
 import { Sheet, YStack, XStack, Button, Text } from 'tamagui';
 
-export const TopicDetailsPopup = ({ topic, onClose }) => {
+export const TopicDetails = ({ topic, onClose }) => {
   return (
     <Sheet modal open onOpenChange={onClose}>
       <Sheet.Frame padding="$4" backgroundColor="$background">

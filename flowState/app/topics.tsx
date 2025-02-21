@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { YStack, XStack, Input, ScrollView, Button } from 'tamagui';
-import { TopicDetailsPopup } from './TopicDetailsPopup';
+import { TopicDetails } from './TopicDetails';
 
 const topics = [
   { id: 1, name: 'Bitcoin Security', summary: 'How Bitcoin transactions work...', keyPoints: ['Encryption', 'Keys', 'Wallets'], related: [2, 3] },
