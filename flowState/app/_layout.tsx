@@ -2,41 +2,48 @@ import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { TamaguiProvider, Theme, } from "tamagui";
+import { TamaguiProvider, Theme, Text } from "tamagui";
+import { ClerkProvider } from "@clerk/clerk-expo";
+import * as SecureStore from "expo-secure-store";
 import { config } from "../tamagui.config";
-import { Slot } from "expo-router";
+import { Slot, useRouter } from "expo-router";
 
-// Prevent the splash screen from auto-hiding
+// Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  // Load your custom fonts (adjust paths/names as needed)
+// SecureStore persistence for Clerk authentication
+const tokenCache = {
+  getToken: async () => await SecureStore.getItemAsync("clerk-token"),
+  saveToken: async (token) => await SecureStore.setItemAsync("clerk-token", token),
+};
+
+export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    "CascadiaCode": require("../assets/fonts/CascadiaCode.ttf"),
+    CascadiaCode: require("../assets/fonts/CascadiaCode.ttf"),
   });
 
-  // Once fonts are loaded, hide the splash screen
   useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
+    async function hideSplash() {
+      if (fontsLoaded) {
+        await SplashScreen.hideAsync();
+      }
     }
+    hideSplash();
   }, [fontsLoaded]);
 
-  // Optionally, you can return null until fonts are loaded
-  if (!fontsLoaded) {
-    return null;
-  }
+  if (!fontsLoaded) return null;
 
   return (
-    <TamaguiProvider config={config}>
-      <Theme name="dark">
-        <StatusBar style="auto" />
-        <Slot />
-      </Theme>
-    </TamaguiProvider>
+    <ClerkProvider
+      publishableKey="YOUR_CLERK_PUBLISHABLE_KEY"
+      tokenCache={tokenCache}
+    >
+      <TamaguiProvider config={config}>
+        <Theme name="dark">
+          <StatusBar style="light" />
+          <Slot />
+        </Theme>
+      </TamaguiProvider>
+    </ClerkProvider>
   );
 }
