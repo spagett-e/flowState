@@ -1,21 +1,17 @@
 const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-/** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname, {
-  // [Web-only]: Enables CSS support in Metro.
   isCSSEnabled: true,
 });
 
-// Add path alias support
-const path = require('path');
-
+// Change `src/` to `app/`
 config.resolver.extraNodeModules = {
-  '@components': path.resolve(__dirname, 'src/components'),
+  '@components': path.resolve(__dirname, 'app/components'),
 };
 
-config.watchFolders = [path.resolve(__dirname, 'src')];
+config.watchFolders = [path.resolve(__dirname, 'app')]; // Change from `src` to `app`
 
-// Add nice web support with optimizing compiler + CSS extraction
 const { withTamagui } = require('@tamagui/metro-plugin');
 
 module.exports = withTamagui(config, {
